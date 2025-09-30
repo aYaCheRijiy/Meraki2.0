@@ -1,0 +1,1569 @@
+@font-face {
+    font-family: "unboundedBlack";
+    src: url("../fonts/unbounded/static/Unbounded-Black.ttf");
+
+}
+@font-face {
+    font-family: "unboundedBold";
+    src: url("../fonts/unbounded/static/Unbounded-Bold.ttf");
+
+}
+@font-face {
+    font-family: "unboundedRegular";
+    src: url("../fonts/unbounded/static/Unbounded-Regular.ttf");
+}
+@font-face {
+    font-family: "unboundedLight";
+    src: url("../fonts/unbounded/static/Unbounded-Light.ttf");
+}
+@font-face {
+    font-family: "asimovian";
+    src: url("../fonts/asimovian/Asimovian-Regular.ttf");
+}
+@font-face {
+    font-family: "TekturSemiBold";
+    src: url("../fonts/Tektur/static/Tektur-SemiBold.ttf");
+}
+@font-face {
+    font-family: "TekturRegular";
+    src: url("../fonts/Tektur/static/Tektur-Regular.ttf");
+}
+
+
+/* Общие стили для body */
+body {
+    min-width:350px;
+    margin: 0;
+    padding: 0;
+    font-family: "unboundedRegular", cursive;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 70px; /* Добавляем отступ для фиксированного хедера */
+    display: flex;
+flex-direction: column;
+    min-height: 100vh;
+
+
+
+}
+
+/*HEADER*/
+.logoAndSvg{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    text-transform: uppercase;
+    text-decoration: none;
+
+    /* Фиксируем хедер */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /*width: 95%;*/
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff; /* Добавляем фон чтобы контент не просвечивал */
+    z-index: 1000; /* Чтобы хедер был поверх другого контента */
+    padding: 20px;
+    border-bottom: 1px solid black;
+
+}
+
+.navMenu{
+    /* Убираем стандартные отступы */
+    margin: 0;
+    padding: 0;
+}
+
+.navtab{
+    text-decoration: none;
+    color: #333333;
+    transition: all 0.3s ease; /* Плавный переход для ссылок */
+}
+
+.navtabSingIn{
+    background-color: #D3C9FF;
+    padding: 7px 50px 7px 50px;
+    filter: drop-shadow(3px 3px 0px black);
+    transition: all 0.3s ease; /* Плавный переход для кнопки */
+}
+.navtabSingUp{
+
+}.navtabSingUp:hover {
+     transform: translateY(-2px);
+    color: #6bffd0;
+ }
+
+/*бургер меню*/
+.burger-checkbox {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.burger {
+    cursor: pointer;
+    display: none; /* Скрываем по умолчанию */
+    position: relative;
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 26px;
+    margin: 0;
+    z-index: 1002;
+}
+
+.burger::before,
+.burger::after {
+    content: '';
+    left: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background: #000;
+    transition: all 0.3s ease; /* Плавная анимация для линий */
+}
+
+.burger::before {
+    top: 0;
+    transform: translateY(0) rotate(0);
+    box-shadow: 0 11px 0 #000;
+    transition: box-shadow 0.3s 0.15s, transform 0.3s, top 0.3s 0.15s;
+}
+
+.burger::after {
+    bottom: 0;
+    transform: translateY(0) rotate(0);
+    transition: bottom 0.3s 0.15s, transform 0.3s;
+}
+
+.burger-checkbox:checked + .burger::before {
+    top: 11px;
+    transform: rotate(45deg);
+    box-shadow: 0 6px 0 rgba(0,0,0,0);
+    transition: box-shadow 0.15s, top 0.3s, transform 0.3s 0.15s;
+}
+
+.burger-checkbox:checked + .burger::after {
+    bottom: 11px;
+    transform: rotate(-45deg);
+    transition: bottom 0.3s, transform 0.3s 0.15s;
+}
+.lineAfterHeader{
+    width: 130%;
+    margin-left: -10%;
+    border: 1px solid black;
+    position: absolute;
+    margin-top: 85px;
+}
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;/* Уменьшаем отступ для мобильных */
+    }
+
+    .header {
+        padding: 20px;
+    }
+
+    /* Скрываем обычное меню на мобильных */
+    .navMenu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+
+        /* Анимация для плавного появления */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.4s ease;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    /* Показываем меню когда чекбокс отмечен */
+    #burger-checkbox:checked ~ .navMenu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        max-height: 300px; /* Достаточно для меню */
+        padding: 1rem 0;
+    }
+
+    /* Стили для ссылок в мобильном меню */
+    .navtab {
+        margin-left: 0;
+        padding: 0.75rem 1rem;
+        display: block;
+        border-bottom: 1px solid #eee;
+        text-align: center;
+        transform: translateX(-20px);
+        opacity: 0;
+        transition: all 0.3s ease 0.1s;
+    }
+
+    #burger-checkbox:checked ~ .navMenu .navtab {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    /* Задержка для каждой ссылки */
+    #burger-checkbox:checked ~ .navMenu .navtab:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+
+    #burger-checkbox:checked ~ .navMenu .navtab:nth-child(2) {
+        transition-delay: 0.15s;
+    }
+
+    #burger-checkbox:checked ~ .navMenu .navtab:nth-child(3) {
+        transition-delay: 0.2s;
+    }
+
+    .navtab:last-child {
+        border-bottom: none;
+    }
+
+    .navtabSingIn {
+        filter: none;
+        margin: 0.5rem 1rem;
+        text-align: center;
+    }
+
+    /* Показываем кнопку бургера на мобильных */
+    .burger {
+        display: block;
+    }
+}
+
+/* Стили для десктопа (ширина больше 768px) */
+@media (min-width: 769px) {
+    /* Скрываем бургер на десктопе */
+    .burger {
+        display: none;
+    }
+
+    /* Показываем обычное меню */
+    .navMenu {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    /* Анимация для ссылок на десктопе */
+    .navtab:hover {
+        transform: translateY(-2px);
+        color: #3b3b3b;
+    }
+
+    .navtabSingIn:hover {
+        transform: translateY(-2px);
+        filter: drop-shadow(4px 4px 0px black);
+    }
+}
+
+/* Основной контент должен иметь отступ */
+
+:root {
+    --color-1: #D0FFCA;
+    --color-2: #FFF7CA;
+    --color-3: #FFCACA;
+    --color-4: #CAFFFF;
+    --color-5: #CAD1FF;
+}
+
+.color-block {
+    transition: fill 0.5s ease-in-out;
+}
+
+.block-1 { fill: var(--color-1); }
+.block-2 { fill: var(--color-2); }
+.block-3 { fill: var(--color-3); }
+.block-4 { fill: var(--color-4); }
+.block-5 { fill: var(--color-5); }
+
+
+
+/*body main*/
+.titleAndPhoneOne{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.titleOne{
+      font-family: "unboundedBold",cursive;
+      font-size: 40px;
+      color: #333333;
+      line-height: 1.4;
+}
+.titleMainUp{
+    width: 50%;
+    margin-left: 7vw;
+}
+.titleTwo{
+    font-family: "unboundedLight",cursive;
+    font-size: 16px;
+    color: #767676;
+}
+.inputTitle_container{
+    margin-top: 10px;
+    width: 70%;
+}
+.input_in_title{
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 100%;
+}
+.input_in_title_container {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    float: left;
+}
+
+.input_in_title {
+    width: 100%;
+    height: 50px;
+    padding: 0 45px 0 110px;
+    border: 1px solid black;
+    border-radius: 25px;
+
+    font-size: 16px;
+    font-family: inherit;
+    background: #fff;
+    transition: all 0.3s
+    ease;
+    box-sizing: border-box;
+    box-shadow: 6px 6px 0px 0px rgb(0 0 0);
+}
+
+.input_in_title:focus {
+    border: 1px solid black;
+    box-shadow: 5px 5px 0px 0px rgb(37, 37, 37);
+
+
+}
+
+.domain-text {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 16px;
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.send-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #505050;
+    border: 1px solid #e3e3e3;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.send-button:hover {
+    background: #30725e;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.send-button:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.iconSendImg {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+
+
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 950px) {
+    .input_in_title_container {
+        width: 90%;
+        max-width: none;
+    }
+
+    .input_in_title {
+        height: 48px;
+        padding: 0 30px 0 100px;
+        font-size: 15px;
+    }
+
+    .domain-text {
+        font-size: 15px;
+        left: 12px;
+    }
+
+    .send-button {
+        width: 34px;
+        height: 34px;
+        right: 7px;
+    }
+}
+
+@media (max-width: 480px) {
+    .input_in_title {
+        height: 44px;
+        padding: 0 40px 0 95px;
+        font-size: 14px;
+
+    }
+
+    .domain-text {
+        font-size: 14px;
+        left: 10px;
+    }
+
+    .send-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .iconSendImg {
+        width: 18px;
+        height: 18px;
+    }
+}
+@media (max-width: 1240px) {
+    .titleOne{
+
+        font-size: 25px;
+
+    }
+    .titleTwo{
+        font-size: 13px;
+    }
+
+}
+@media (max-width: 850px) {
+    .titleOne{
+
+        font-size: 21px;
+
+    }
+    .titleTwo{
+        font-size: 10px;
+    }
+
+}
+
+
+
+@media (max-width: 950px) {
+    .phoneOnTitleOne{
+        display: none;
+    }
+
+    /* ИЗМЕНЕНИЕ: Левая часть теперь занимает всю ширину */
+    .titleMainUp {
+        width: 100%;
+        margin-left: 0;
+        padding: 0 20px; /* Добавил отступы по бокам для мобильных */
+        box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+    }
+
+    /* ИЗМЕНЕНИЕ: Контейнер для центрирования контента */
+    .titleAndPhoneOne {
+        justify-content: center; /* Центрируем контент */
+        text-align: center; /* Выравниваем текст по центру */
+    }
+
+    /* ИЗМЕНЕНИЕ: Увеличиваем ширину инпута на мобильных */
+    .input_in_title_container {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+.highlight-marker {
+    position: relative;
+    display: inline-block;
+}
+
+.highlight-marker::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #6BFFD0;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-5deg); /* Наклон для эффекта рукописного маркера */
+}
+
+.body{
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+.backgroundO{
+    position: absolute;
+    z-index: -1;
+    width: 600px;
+    top: 110px;
+    margin-left: -10%;
+}
+/*блок телефон в тайтле .main*/
+.phoneOnTitleOne{
+    width: 40%;
+}.phone {
+     width: 383px;
+     height: 754px;
+     border: 1px solid black;
+     border-radius: 20px;
+     box-shadow: 6px 6px 0px 0px rgb(0 0 0);
+     margin-left: auto;
+     margin-right: 10%;
+     object-fit: cover;
+     overflow: auto;
+     background-color: #f4f8ff;
+     scrollbar-width: none;
+     scroll-behavior: smooth;
+ }
+
+.phone::-webkit-scrollbar {
+    display: none;
+}
+
+/* Остальные стили остаются без изменений */
+.phoneOnTitleOne{
+    width: 40%;
+}
+.svgPhoneHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.fotoOnPhone{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.fotoOnPhoneImg{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 1px solid black;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+}
+.textBottomOnFoto{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 20px;
+}
+.textBottomOnFoto div{
+    font-family: "UnboundedLight",cursive;
+    font-size: 13px;
+}
+.svgTgInternetInst{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.pictGaleryOnPhone{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+}
+.fotoOnPhoneImgGalery{
+    width: 135px;
+    height: 135px;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.fotoOnPhoneImgGalery:hover{
+    transform: scale(1.02);
+    box-shadow: 5px 5px 0px 0px rgb(0 0 0);
+}
+
+/* Стили для кнопок */
+.buttOnPhone{
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 15px;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.buttOnPhone:hover{
+    transform: scale(1.02);
+}
+
+.buttOnPhone1{
+    color: #3b3b3b;
+    background-color: #CAFFFF;
+    z-index: 10;
+}
+
+.buttOnPhone2{
+    color: #3b3b3b;
+    background-color: #d7ffca;
+}
+
+.buttOnPhone3{
+    color: #3b3b3b;
+    background-color: #e5caff;
+}
+
+.buttOnPhone4{
+    color: #3b3b3b;
+    background-color: #ffcaca;
+}
+
+.svgPhoneTopOne{
+    transition: all 0.2s ease;cursor: pointer;
+}
+.svgPhoneTopOne:hover{
+    transform: scale(1.05);
+}
+.svgPhoneTopTwo{
+    transition: all 0.2s ease;cursor: pointer;
+}
+.svgPhoneTopTwo:hover{
+    transform: scale(1.05);
+}
+.containerForButton{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Стили для выпадающей кнопки */
+.dropdown-button {
+    height: 50px; /* Изначально компактная высота */
+    transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.folderButtAndSvg{
+    display: flex;
+    align-items: center;
+
+}
+.folderButtAndSvg svg{
+    margin-top: 5px;
+}
+.button-main-content {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-weight: bold;
+    transition: all 0.2s ease;
+}
+
+.dropdown-items-container {
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease 0.1s; /* Задержка для плавности */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Активное состояние - кнопка расширяется */
+.dropdown-button.active {
+    height: 200px; /* 50px основная кнопка + 150px подпунктов */
+}
+
+.dropdown-button.active .dropdown-items-container {
+    height: 150px;
+    opacity: 1;
+}
+
+.dropdown-item {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b8f0f0;
+    border-top: 1px solid #a0e0e0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    width: 100%;
+}
+
+.dropdown-item:hover {
+    background-color: #a0e8e8;
+    transform: scale(1.02);
+}
+
+.dropdown-item:first-child {
+    border-top: 1px solid #a0e0e0;
+}
+
+.dropdown-item:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Анимация для других кнопок при выпадании */
+.buttOnPhone2, .buttOnPhone3, .buttOnPhone4 {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/*4 блока цикличных*/
+.fourBlockCikl-container {
+    width: 105.5%;
+    margin-left: -3%;
+    height: 80px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 12px;
+}
+
+
+.fourBlockCikl{
+    width: 200%;
+    height: 75px;
+    gap: 10px;
+    display: flex;
+    position: absolute;
+    animation: moveBlocks 20s linear infinite;
+}
+
+.blokCickl{
+    border: 1px solid black;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+    border-radius: 3px;
+    flex: 1;
+    min-width: calc(12.5% - 7.5px); /* 100% / 8 блоков */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    font-size: 15px;padding: 20px;
+
+
+
+}
+@media (max-width: 950px) {
+    .blokCickl{
+        font-size: 10px;
+    }
+    .fourBlockCikl{
+        width: 200%;
+        height: 45px;
+        gap: 5px;
+    }
+    .fourBlockCikl-container{
+        height: 50px;
+    }
+}
+@media (max-width: 550px) {
+    .blokCickl{
+        font-size: 7px;
+    }
+}
+
+
+@keyframes moveBlocks {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: -100%; /* Сдвигаем на ширину оригинальных 4 блоков */
+    }
+}
+
+
+.blokCickl1{
+background-color: #CAD1FF;
+}
+
+.blokCickl2{
+    background-color: #CAFFFF;
+}
+.blokCickl3{
+    background-color: #FFCACA;
+}
+.blokCickl4{
+    background-color: #FFF7CA;
+}
+
+.fotoOnTreeBlocks{
+    width: 150px;
+    height: 150px;
+}.blockOnTreeBlock_container {
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     gap: 20px;
+     margin-top: 7px;
+     padding: 0 15px;
+     max-width: 100%;
+     box-sizing: border-box;
+ }
+
+.blockOnTreeBlock {
+    border: 1px solid black;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+    border-radius: 15px;
+    display: flex;
+    flex-direction:row;
+    padding: 20px;
+    align-items: center;
+    text-align: left;
+    min-height: 200px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease;
+}
+
+.blockOnTreeBlock:hover {
+    transform: translateY(-5px);
+}
+
+.blockOnTreeBlock_content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.blockOnTreeBlock_content p {
+    margin-bottom: 10px;
+}
+
+.blockOnTreeBlockHeadP {
+    font-family: "TekturSemiBold", cursive;
+    font-size: 20px;
+    margin: 0 0 15px 0;
+}
+
+.blockOnTreeBlockBottomP {
+    font-family: "TekturRegular", cursive;
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.fotoOnTreeBlocks {
+    width: 110px;
+    height: 110px;
+    margin-top: 15px;
+    flex-shrink: 0;
+}
+
+/* Планшетная версия (2 колонки) */
+@media (max-width: 1024px) {
+    .blockOnTreeBlock_container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .blockOnTreeBlockHeadP {
+        font-size: 18px;
+    }
+
+    .blockOnTreeBlockBottomP {
+        font-size: 13px;
+    }
+}
+
+/* Мобильная версия (1 колонка) */
+@media (max-width: 768px) {
+    .blockOnTreeBlock_container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .blockOnTreeBlock {
+        min-height: auto;
+        padding: 15px;
+        flex-direction: row;
+        text-align: left;
+        gap: 15px;
+    }
+
+    .blockOnTreeBlock_content {
+        flex: 1;
+    }
+
+    .fotoOnTreeBlocks {
+        width: 90px;
+        height: 90px;
+        margin-top: 0;
+    }
+
+    .blockOnTreeBlockHeadP {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .blockOnTreeBlockBottomP {
+        font-size: 12px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+    .blockOnTreeBlock {
+        flex-direction: row;
+        text-align: left;
+        gap: 10px;
+
+    }
+
+    .fotoOnTreeBlocks {
+        width: 50px;
+        height: 50px;
+    }
+
+    .blockOnTreeBlockHeadP {
+        font-size: 15px;
+    }
+
+    .blockOnTreeBlockBottomP {
+        font-size: 11px;
+    }
+}
+.markerBlockHeadPOne{
+        position: relative;
+        display: inline-block;
+}
+.markerBlockHeadPOne::after {
+      content: '';
+      position: absolute;
+      bottom: 0.1em;
+      left: -0.1em;
+      width: calc(100% + 0.2em);
+      height: 0.5em;
+      background-color: #ffcaca;
+      z-index: -1;
+      opacity: 0.8;
+      border-radius: 3px;
+      transform: skewX(-9deg); /* Наклон для эффекта рукописного маркера */
+  }
+.markerBlockHeadPTwo{
+    position: relative;
+    display: inline-block;
+}
+.markerBlockHeadPTwo::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #cad1ff;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-8deg); /* Наклон для эффекта рукописного маркера */
+}
+.markerBlockHeadPTree{
+    position: relative;
+    display: inline-block;
+}
+.markerBlockHeadPTree::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #caffff;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-7deg); /* Наклон для эффекта рукописного маркера */
+}
+/*второй будто телефон*/
+.phoneAndText_container{
+    margin-top: 20px;
+}
+.titleUpP{
+    font-family: "TekturSemiBold", cursive;
+    font-size: 25px;
+    text-align: center;
+}
+.titleDownP{
+    font-family: "TekturRegular", cursive;
+    font-size: 15px;
+    text-align: center;
+}
+.phoneOnTitleOne{
+    width: 40%;
+}
+.phone2{
+    width: 383px;
+    height: 754px;
+    border: 1px solid black;
+    border-radius: 20px;
+    box-shadow: 6px 6px 0px 0px rgb(0 0 0);
+    object-fit: cover;
+    overflow: auto;
+    background-color: #f4f8ff;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+/* ОСНОВНЫЕ ИЗМЕНЕНИЯ: */
+.phoneAndTextTwo{
+    display: flex;
+    align-items: flex-start; /* Изменил на flex-start для лучшего выравнивания */
+    justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    gap: 5%;
+    margin-top: 30px;
+}
+
+.phoneNumberTwo_container {
+    flex: 0 0 auto; /* Блок телефона не растягивается */
+}
+
+.textP_container {
+    flex: 1; /* Текстовый блок занимает оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin-top: 10%;
+}
+
+.textPRightOnPhone{
+    padding-bottom: 100px;
+}
+.titleUpPRightOnPhone{
+    font-family: "TekturSemiBold", cursive;
+    font-size: 25px;
+}
+.titleDownPRightOnPhone{
+    font-family:"TekturRegular",cursive;
+    font-size: 15px;
+}
+
+/* МЕДИА-ЗАПРОСЫ ДЛЯ АДАПТИВНОСТИ */
+@media (max-width: 950px) {
+    .phoneNumberTwo_container{
+        display: none; /* Скрываем блок телефона */
+    }
+
+    .phoneAndTextTwo {
+        width: 90%; /* Уменьшаем ширину на мобильных */
+        justify-content: center; /* Центрируем контент */
+    }
+
+    .textP_container {
+        width: 100%; /* Текстовый блок занимает всю ширину */
+        margin-left: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        gap: 40px; /* Уменьшаем отступы между текстовыми блоками */
+        flex-direction: column;
+        margin-top: 1%;
+    }
+
+    .textPRightOnPhone {
+        padding-bottom: 40px; /* Уменьшаем отступы снизу */
+    }
+
+    /* Центрируем заголовки на мобильных */
+    .titleUpPRightOnPhone,
+    .titleDownPRightOnPhone {
+        text-align: center;
+    }
+}
+
+/* Дополнительный медиа-запрос для очень маленьких экранов */
+@media (max-width: 480px) {
+    .phoneAndText_container {
+        margin-top: 10px;
+    }
+
+    .titleUpP {
+        font-size: 20px;
+    }
+
+    .titleDownP {
+        font-size: 14px;
+    }
+
+    .phoneAndTextTwo {
+        width: 95%;
+        margin-top: 20px;
+    }
+
+    .textP_container {
+        padding: 0 10px;
+        gap: 30px;
+        flex-direction: column;
+    }
+
+    .titleUpPRightOnPhone {
+        font-size: 20px;
+    }
+
+    .titleDownPRightOnPhone {
+        font-size: 14px;
+    }
+
+    .textPRightOnPhone {
+        padding-bottom: 30px;
+    }
+}
+
+/*блоки для кого*/
+.forWho_container{
+    margin-top: 30px;
+    padding: 0 15px; /* Добавляем отступы по бокам */
+    max-width: 100%;
+    overflow-x: hidden; /* На всякий случай скрываем горизонтальный скролл */
+    padding-bottom: 5px;
+}
+
+.forWho_blockAll{
+    gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Исправлено на 1fr */
+    justify-items: center;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.forWhoP{
+    font-family: "UnboundedLight", cursive;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.forWho_block{
+    border: 1px solid black;
+    box-shadow: 3px 3px 0px 0px rgb(0 0 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100%; /* Занимает всю доступную ширину колонки */
+    max-width: 100%;
+    min-height: 300px;
+    border-radius: 15px;
+    box-sizing: border-box; /* Важно для правильного расчета размеров */
+}
+
+.forWho_img{
+    width: 130px;
+    height: 130px;
+    flex-shrink: 0; /* Изображение не сжимается */
+}
+
+.spanForWho{
+    font-family: Tektur;
+    font-size: 30px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+.forWho_text p{
+    font-family: Tektur;
+    font-size: 20px;
+    margin: 0;
+}
+
+.forWho_text{
+    margin: 20px;
+    flex: 1; /* Текст занимает доступное пространство */
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .forWho_blockAll{
+        grid-template-columns: 1fr; /* Одна колонка на мобильных */
+        gap: 20px;
+    }
+
+    .forWho_block{
+        min-width: unset; /* Убираем фиксированную минимальную ширину */
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column; /* Вертикальное расположение на мобильных */
+        text-align: center;
+        min-height: auto; /* Автоматическая высота */
+        padding: 20px;
+    }
+
+    .forWho_img{
+        margin-top: 15px;
+        width: 100px; /* Немного уменьшаем изображение на мобильных */
+        height: 100px;
+    }
+
+    .spanForWho{
+        font-size: 24px; /* Уменьшаем размер шрифта на мобильных */
+        margin-bottom: 20px;
+    }
+
+    .forWho_text p{
+        font-size: 16px;
+    }
+
+}
+
+/* Дополнительный медиа-запрос для очень маленьких экранов */
+@media (max-width: 480px) {
+    .forWho_container{
+        padding: 0 10px;
+    }
+
+    .forWho_block{
+        padding: 15px;
+    }
+
+    .spanForWho{
+        font-size: 20px;
+    }
+
+    .forWho_text p{
+        font-size: 14px;
+    }
+
+}
+.markerForWhoOne{
+    position: relative;
+    display: inline-block;
+}
+.markerForWhoOne::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #d7ffca;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-7deg); /* Наклон для эффекта рукописного маркера */
+}
+.markerForWhoTwo{
+    position: relative;
+    display: inline-block;
+}
+.markerForWhoTwo::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #fff3ca;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-7deg); /* Наклон для эффекта рукописного маркера */
+}.markerForWhoTree{
+     position: relative;
+     display: inline-block;
+ }
+.markerForWhoTree::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #cad9ff;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-7deg); /* Наклон для эффекта рукописного маркера */
+}.markerForWhoFour{
+     position: relative;
+     display: inline-block;
+ }
+.markerForWhoFour::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.5em;
+    background-color: #ffcaca;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-7deg); /* Наклон для эффекта рукописного маркера */
+}
+.forWho_blockOne{
+    background-color: #FFF3FE;
+    z-index: -2;
+}
+.forWho_blockTwo{
+    background-color: #F3F6FF;
+    z-index: -2;
+}
+.forWho_blockTree{
+    background-color: #F8FFF3;
+    z-index: -2;
+}
+.forWho_blockFour{
+    background-color: #F3FFFE;
+    z-index: -2;
+}
+
+/*FOOTER*/
+.footer_container{
+    width: 100%;
+    display: flex;
+    /* gap: 90%; */
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 10%;
+}
+footer {
+    width: 105%;
+    margin-left: -2.5%;
+    /* height: 75px; */
+    gap: 10px;
+    display: flex;
+
+    background-color: #eee9ff;
+    padding: 5px;
+
+    z-index: -2;
+    border-top: 1px solid black;
+    margin-top: auto;
+
+
+}
+.footer_column{
+
+
+}
+
+.hightLightMarker{
+    color: #424242;
+    position: relative;
+    display: inline-block;
+}
+
+.hightLightMarker::after{
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.2em;
+    background-color: #fff4c3;
+    z-index: 1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-80deg); /* Наклон для эффекта рукописного маркера */
+}
+.footer_column_one{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+ }
+.footer_column_two{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.footer_column_tree{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+@media (max-width:768px ) {
+    .footer_container{
+        margin-left: 3%;
+        margin-right: 7%;
+    }
+
+}
+@media (max-width:480px ) {
+    .footer_container{
+        margin-left: 1%;
+        margin-right: 4%;
+    }
+
+}
+
+
+
+
+
+
+/*LOGIN IN BREEZE*/
+/* Контейнер формы */
+.custom-auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Группы полей */
+.custom-form-group {
+    margin-bottom: 20px;
+}
+
+/* Метки */
+.custom-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 14px;
+}
+
+/* Поля ввода */
+.custom-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.custom-input:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+/* Кнопка */
+.custom-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: 6px 6px 0px 0px rgb(0 0 0);
+    padding: 12px 30px;
+    border: none;
+
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.custom-button:hover {
+    transform: translateY(-2px);
+}
+
+/* Чекбокс */
+.custom-checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.custom-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.custom-checkbox-text {
+    color: #4a5568;
+    font-size: 14px;
+}
+
+/* Ссылки */
+.custom-link {
+    color: #4299e1;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.custom-link:hover {
+    color: #3182ce;
+    text-decoration: underline;
+}
+
+/* Ошибки */
+.custom-error {
+    color: #e53e3e;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+.logoAndTextOnAuth{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+
+
+
+/*auth.layout*/
+/* Стили для главной страницы */
+body:not(.auth-layout) {
+    padding-top: 70px; /* ваш обычный padding */
+    margin: 0;
+    width: 100%;
+}
+
+/* Стили для страниц аутентификации */
+body.auth-layout {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+}
+
+.text_and_butSingUp{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
