@@ -37,7 +37,18 @@
             <a class="navtab" href="{{ route('main.index') }}">Главная</a>
             <a class="navtab" href="{{ route('client.index') }}">Клиенты</a>
             <a class="navtab" href="{{ route('price.index') }}">Цены</a>
-            <a class="navtab navtabSingIn" href="{{ route('login') }}">Войти</a>
+            @auth
+                <!-- Показать аватар если пользователь авторизован -->
+                <a class="navtab user-avatar" values="Твой профиль)" href="{{ route('dashboard') }}">
+                    <div class="avatar-circle">
+                        {{-- Показываем первую букву имени пользователя --}}
+                        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                    </div>
+                </a>
+            @else
+                <!-- Показать кнопку входа если пользователь не авторизован -->
+                <a class="navtab navtabSingIn" href="{{ route('login') }}">Войти</a>
+            @endauth
 
         </div>
 

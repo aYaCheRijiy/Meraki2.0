@@ -12,10 +12,12 @@
     <title>Meraki</title>
 </head>
 <body>
+
 @include('layouts.header')
 <div class="body">
     @yield('content')
 </div>
 @include('layouts.footer')
+
 </body>
 </html>

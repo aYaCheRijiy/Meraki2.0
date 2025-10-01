@@ -32,21 +32,9 @@
 
 /* Общие стили для body */
 body {
-    min-width:350px;
-    margin: 0;
-    padding: 0;
-    font-family: "unboundedRegular", cursive;
-    width: 95%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 70px; /* Добавляем отступ для фиксированного хедера */
-    display: flex;
-flex-direction: column;
-    min-height: 100vh;
-
-
 
 }
+
 
 /*HEADER*/
 .logoAndSvg{
@@ -1196,8 +1184,12 @@ background-color: #CAD1FF;
     min-height: 300px;
     border-radius: 15px;
     box-sizing: border-box; /* Важно для правильного расчета размеров */
-}
+    transition: transform 0.3s ease;
 
+}
+.forWho_block:hover{
+    transform:translateY(5px);
+}
 .forWho_img{
     width: 130px;
     height: 130px;
@@ -1544,19 +1536,31 @@ footer {
     gap: 20px;
 }
 
-
+body{
+    min-width:350px;
+    margin: 0;
+    padding: 0;
+    font-family: "unboundedRegular", cursive;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 70px; /* Добавляем отступ для фиксированного хедера */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
 
 /*auth.layout*/
 /* Стили для главной страницы */
 body:not(.auth-layout) {
-    padding-top: 70px; /* ваш обычный padding */
-    margin: 0;
-    width: 100%;
+
+    font-family: "unboundedRegular", cursive;
 }
 
 /* Стили для страниц аутентификации */
 body.auth-layout {
+    font-family: "unboundedRegular", cursive;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
@@ -1566,4 +1570,19 @@ body.auth-layout {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+.user-avatar{
+    border: 3px solid #444444;
+    width: 40px;
+    height: 40px;
+    padding: 6%;
+    border-radius: 50%;
+    display: flex
+;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(254, 110, 110, 0.47);
+    font-size: 20px;
+    font-weight: bold;
+
 }
