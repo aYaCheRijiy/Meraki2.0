@@ -11,10 +11,10 @@
 
     <title>Meraki</title>
 </head>
-<body>
+<body class="body">
 
 @include('layouts.header')
-<div class="body">
+<div class="body_pages">
     @yield('content')
 </div>
 @include('layouts.footer')

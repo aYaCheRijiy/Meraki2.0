@@ -117,6 +117,75 @@
             <img class="fotoOnTreeBlocks" src="{{ asset('img/planet.png') }}" alt="">
         </div>
     </div>
+    <p class="whoUseIt_P"><span class="markerHightsLight">Кто использует Meraki?</span></p>
+    <div class="whoUseIt_container">
+        <div class="whoUseItMainBlock">
+            <a href="#" class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+            <a href="#"  class="whoUseItBlock">
+                <img class="whoUseItImg" src="{{ asset('img/phoneNumbOne.png') }}" alt="">
+            </a>
+
+        </div>
+    </div>
+    <div class="forWho_container">
+        <p class="forWhoP">Meraki идеален для каждого, у кого есть аудитория или клиенты.</p>
+        <div class="forWho_blockAll">
+            <div class="forWho_block forWho_blockOne">
+                <div class="forWho_text">
+                    <span class="spanForWho markerForWhoOne">Предприниматели</span>
+                    <p>Презентуйте свой бизнес и ведите клиентов в соцсети, на сайт или в каталог.</p>
+                </div>
+                <img class="forWho_img" src="{{ asset('img/hight.png') }}" alt="">
+            </div>
+            <div class="forWho_block forWho_blockTwo">
+                <div class="forWho_text">
+                    <span class="spanForWho markerForWhoTwo">Блогеры и творцы</span>
+                    <p>Объедините все свои проекты и платформы в одном профессиональном профиле.</p>
+                </div>
+                <img class="forWho_img" src="{{ asset('img/brush.png') }}" alt="">
+            </div>
+            <div class="forWho_block forWho_blockTree">
+                <div class="forWho_text">
+                    <span class="spanForWho markerForWhoTree">Фрилансеры</span>
+                    <p>Покажите портфолио и упростите заказчикам возможность связаться с вами.</p>
+                </div>
+                <img class="forWho_img" src="{{ asset('img/folder.png') }}" alt="">
+            </div>
+            <div class="forWho_block forWho_blockFour">
+                <div class="forWho_text">
+                    <span class="spanForWho markerForWhoFour">События</span>
+                    <p>Соберите всю информацию для гостей: программа, регистрация, карта.</p>
+                </div>
+                <img class="forWho_img" src="{{ asset('img/calendar.png') }}" alt="">
+            </div>
+        </div>
+    </div>
     <div class="phoneAndText_container">
         <p class="titleUpP">Больше чем просто ссылка в биографии.</p>
         <p class="titleDownP">Мы даём вам все инструменты, чтобы ваша карточка работала на вас 24/7.</p>
@@ -179,39 +248,6 @@
                     <p class="titleUpPRightOnPhone">Визуальный конструктор</p>
                     <p class="titleDownPRightOnPhone">Редактируйте всё в реальном времени. Видите, как ваша карточка оживает сразу после каждого изменения.</p>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="forWho_container">
-        <p class="forWhoP">PHIDÖ идеален для каждого, у кого есть аудитория или клиенты.</p>
-        <div class="forWho_blockAll">
-            <div class="forWho_block forWho_blockOne">
-                <div class="forWho_text">
-                    <span class="spanForWho markerForWhoOne">Предприниматели</span>
-                    <p>Презентуйте свой бизнес и ведите клиентов в соцсети, на сайт или в каталог.</p>
-                </div>
-                <img class="forWho_img" src="{{ asset('img/hight.png') }}" alt="">
-            </div>
-            <div class="forWho_block forWho_blockTwo">
-                <div class="forWho_text">
-                    <span class="spanForWho markerForWhoTwo">Блогеры и творцы</span>
-                    <p>Объедините все свои проекты и платформы в одном профессиональном профиле.</p>
-                </div>
-                <img class="forWho_img" src="{{ asset('img/brush.png') }}" alt="">
-            </div>
-            <div class="forWho_block forWho_blockTree">
-                <div class="forWho_text">
-                    <span class="spanForWho markerForWhoTree">Фрилансеры</span>
-                    <p>Покажите портфолио и упростите заказчикам возможность связаться с вами.</p>
-                </div>
-                <img class="forWho_img" src="{{ asset('img/folder.png') }}" alt="">
-            </div>
-            <div class="forWho_block forWho_blockFour">
-                <div class="forWho_text">
-                    <span class="spanForWho markerForWhoFour">События</span>
-                    <p>Соберите всю информацию для гостей: программа, регистрация, карта.</p>
-                </div>
-                <img class="forWho_img" src="{{ asset('img/calendar.png') }}" alt="">
             </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 
-<img class="backgroundO" src="{{ asset('img/backgroundO.png') }}" alt="">
+{{--<img class="backgroundO" src="{{ asset('img/backgroundO.png') }}" alt="">--}}
     <div class="header">
         <a class="logoAndSvg" href="{{ route('main.index') }}">
             <svg class="svg_logo" width="64" height="64" viewBox="0 0 54 54" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -35,18 +35,18 @@
 
         <div class="navMenu" id="">
             <a class="navtab" href="{{ route('main.index') }}">Главная</a>
-            <a class="navtab" href="{{ route('client.index') }}">Клиенты</a>
+            <a class="navtab" href="{{ route('client.index') }}"><span class="markerHeaderClient">Пользователи</span></a>
             <a class="navtab" href="{{ route('price.index') }}">Цены</a>
             @auth
-                <!-- Показать аватар если пользователь авторизован -->
-                <a class="navtab user-avatar" values="Твой профиль)" href="{{ route('dashboard') }}">
-                    <div class="avatar-circle">
-                        {{-- Показываем первую букву имени пользователя --}}
+                <a class="navtab user-profile-link" href="{{ route('dashboard') }}">
+                    <div class="avatar-circle desktop-only">
                         {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-                    </div>
+                            </div>
+                            <span class="profile-text mobile-only">
+                    {{ auth()->user()->name }}
+                </span>
                 </a>
             @else
-                <!-- Показать кнопку входа если пользователь не авторизован -->
                 <a class="navtab navtabSingIn" href="{{ route('login') }}">Войти</a>
             @endauth
 

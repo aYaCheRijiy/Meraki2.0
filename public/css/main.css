@@ -65,7 +65,23 @@ body {
     border-bottom: 1px solid black;
 
 }
-
+.markerHeaderClient{
+    position: relative;
+    display: inline-block;
+}
+.markerHeaderClient::after{
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.4em;
+    background-color: #a0adff;
+    z-index: -1;
+    opacity: 0.5;
+    border-radius: 3px;
+    transform: skewX(139deg);
+}
 .navMenu{
     /* Убираем стандартные отступы */
     margin: 0;
@@ -81,7 +97,7 @@ body {
 .navtabSingIn{
     background-color: #D3C9FF;
     padding: 7px 50px 7px 50px;
-    filter: drop-shadow(3px 3px 0px black);
+    filter: drop-shadow(2px 2px 0px black);
     transition: all 0.3s ease; /* Плавный переход для кнопки */
 }
 .navtabSingUp{
@@ -157,9 +173,7 @@ body {
 }
 /* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
-    body {
-        padding-top: 100px;/* Уменьшаем отступ для мобильных */
-    }
+
 
     .header {
         padding: 20px;
@@ -191,14 +205,14 @@ body {
         opacity: 1;
         visibility: visible;
         transform: translateY(0);
-        max-height: 300px; /* Достаточно для меню */
+        max-height: 300px;
         padding: 1rem 0;
     }
 
     /* Стили для ссылок в мобильном меню */
     .navtab {
         margin-left: 0;
-        padding: 0.75rem 1rem;
+        padding: 0.5rem 0.5rem;
         display: block;
         border-bottom: 1px solid #eee;
         text-align: center;
@@ -262,8 +276,100 @@ body {
     }
 
     .navtabSingIn:hover {
+        transform: translateY(-1px);
+        filter: drop-shadow(2px 2px 0px black);
+    }
+}
+.profile-text {
+    display: none;
+    background-color: #D3C9FF;
+    padding: 7px 15px;
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}/* Стили для аватара пользователя */
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #D3C9FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+.user-profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Текст профиля для мобильных */
+.profile-text {
+    display: none;
+    background-color: #D3C9FF;
+    padding: 7px 20px;
+    border-radius: 4px;
+    color: #333;
+    font-weight: 500;
+    border: 2px solid #333;
+    transition: all 0.3s ease;
+}
+
+/* Показываем/скрываем элементы в зависимости от устройства */
+.desktop-only {
+    display: flex;
+}
+
+.mobile-only {
+    display: none;
+}
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
+
+    /* Стили для кнопки профиля в мобильном меню */
+    .user-profile-link {
+        justify-content: center;
+        margin: 0.1rem 0.1rem;
+    }
+
+    .profile-text {
+        display: block;
+        width: 100%;
+        text-align: center;
+        filter: drop-shadow(3px 3px 0px black);
+    }
+
+    .profile-text:hover {
         transform: translateY(-2px);
-        filter: drop-shadow(4px 4px 0px black);
+        filter: drop-shadow(1px 1px 0px black);
+    }
+}
+
+/* Стили для десктопа */
+@media (min-width: 769px) {
+    .avatar-circle:hover {
+        transform: translateY(-2px);
+        box-shadow: 3px 3px 0px black;
     }
 }
 
@@ -445,22 +551,22 @@ body {
 @media (max-width: 1240px) {
     .titleOne{
 
-        font-size: 25px;
+        font-size: 23px;
 
     }
     .titleTwo{
-        font-size: 13px;
+        font-size: 11px;
     }
 
 }
 @media (max-width: 850px) {
     .titleOne{
 
-        font-size: 21px;
+        font-size: 15px;
 
     }
     .titleTwo{
-        font-size: 10px;
+        font-size: 9px;
     }
 
 }
@@ -753,6 +859,7 @@ body {
     overflow: hidden;
     position: relative;
     margin-top: 12px;
+    margin-bottom: 10px;
 }
 
 
@@ -833,8 +940,10 @@ background-color: #CAD1FF;
      gap: 20px;
      margin-top: 7px;
      padding: 0 15px;
-     max-width: 100%;
+     max-width: 90%;
      box-sizing: border-box;
+     margin-left: auto;
+     margin-right: auto;
  }
 
 .blockOnTreeBlock {
@@ -960,6 +1069,28 @@ background-color: #CAD1FF;
         font-size: 11px;
     }
 }
+
+
+
+.markerHeaderClient{
+    position: relative;
+    display: inline-block;
+}
+.markerHeaderClient::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.3em;
+    background-color: #dbc9ff;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-9deg); /* Наклон для эффекта рукописного маркера */
+}
+
+
 .markerBlockHeadPOne{
         position: relative;
         display: inline-block;
@@ -971,7 +1102,7 @@ background-color: #CAD1FF;
       left: -0.1em;
       width: calc(100% + 0.2em);
       height: 0.5em;
-      background-color: #ffcaca;
+      background-color: #ffbebe;
       z-index: -1;
       opacity: 0.8;
       border-radius: 3px;
@@ -988,7 +1119,7 @@ background-color: #CAD1FF;
     left: -0.1em;
     width: calc(100% + 0.2em);
     height: 0.5em;
-    background-color: #cad1ff;
+    background-color: #ceffc1;
     z-index: -1;
     opacity: 0.8;
     border-radius: 3px;
@@ -1005,7 +1136,7 @@ background-color: #CAD1FF;
     left: -0.1em;
     width: calc(100% + 0.2em);
     height: 0.5em;
-    background-color: #caffff;
+    background-color: #cdffff;
     z-index: -1;
     opacity: 0.8;
     border-radius: 3px;
@@ -1159,18 +1290,35 @@ background-color: #CAD1FF;
 .forWho_blockAll{
     gap: 30px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Исправлено на 1fr */
+    grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    max-width: 100%;
+    max-width: 80%;
     box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+
 .forWhoP{
-    font-family: "UnboundedLight", cursive;
-    font-size: 13px;
     text-align: center;
-    margin-bottom: 20px;
+    font-family: "unboundedBold",cursive;
+    font-size: 20px;
+    color: #333333;
+    line-height: 1.4;
+    margin-top: 20px;
+
 }
+@media (max-width: 1240px) {
+    .forWhoP{
+        font-size: 15px;
+    }
+}
+@media (max-width: 850px) {
+    .forWhoP{
+        font-size: 12px;
+    }
+}
+
 
 .forWho_block{
     border: 1px solid black;
@@ -1225,7 +1373,7 @@ background-color: #CAD1FF;
         min-width: unset; /* Убираем фиксированную минимальную ширину */
         width: 100%;
         max-width: 100%;
-        flex-direction: column; /* Вертикальное расположение на мобильных */
+        flex-direction: row; /* Вертикальное расположение на мобильных */
         text-align: center;
         min-height: auto; /* Автоматическая высота */
         padding: 20px;
@@ -1245,7 +1393,9 @@ background-color: #CAD1FF;
     .forWho_text p{
         font-size: 16px;
     }
-
+    .forWho_text{
+        text-align: left;
+    }
 }
 
 /* Дополнительный медиа-запрос для очень маленьких экранов */
@@ -1265,8 +1415,18 @@ background-color: #CAD1FF;
     .forWho_text p{
         font-size: 14px;
     }
-
+    .forWho_text{
+        text-align: left;
+    }
 }
+
+
+
+
+
+
+
+
 .markerForWhoOne{
     position: relative;
     display: inline-block;
@@ -1535,8 +1695,18 @@ footer {
     align-items: center;
     gap: 20px;
 }
-
 body{
+    min-width:350px;
+    margin: 0;
+    padding: 0;
+    font-family: "unboundedRegular", cursive;
+
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.body{
     min-width:350px;
     margin: 0;
     padding: 0;
@@ -1544,7 +1714,7 @@ body{
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 70px; /* Добавляем отступ для фиксированного хедера */
+    padding-top: 120px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -1572,17 +1742,136 @@ body.auth-layout {
     gap: 10px;
 }
 .user-avatar{
-    border: 3px solid #444444;
+    border: 1px solid #444444;
     width: 40px;
     height: 40px;
     padding: 6%;
+    color: #424242;
+    text-shadow: #fff8f8 1px 0 10px;
     border-radius: 50%;
-    display: flex
-;
+    display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(254, 110, 110, 0.47);
+    background: #833AB4;
+    background: linear-gradient(90deg, rgb(234, 204, 255) 0%, rgb(255, 200, 200) 78%, rgb(255, 233, 203) 100%);
     font-size: 20px;
     font-weight: bold;
 
 }
+
+
+
+
+
+/*Кто использует блок main*/
+.whoUseIt_P{
+    text-align: center;
+    font-family: "unboundedBold",cursive;
+    font-size: 30px;
+    color: #333333;
+    line-height: 1.4;
+    margin-top: 20px;
+
+}
+
+
+
+@media (max-width: 1240px) {
+    .whoUseIt_P{
+
+        font-size: 25px;
+
+    }
+}
+@media (max-width: 850px) {
+    .whoUseIt_P{
+
+        font-size: 21px;
+
+    }
+
+}
+
+
+
+
+
+.markerHightsLight{
+    color: #424242;
+    position: relative;
+    display: inline-block;
+}
+
+.markerHightsLight::after{
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
+    left: -0.1em;
+    width: calc(100% + 0.2em);
+    height: 0.2em;
+    background-color: #ffaaaa;
+    z-index: -1;
+    opacity: 0.8;
+    border-radius: 3px;
+    transform: skewX(-30deg); /* Наклон для эффекта рукописного маркера */
+}
+
+
+.whoUseItMainBlock {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 40px 0;
+    overflow-x: auto;
+    scrollbar-width: thin; /* Firefox - тонкий скролл */
+    scrollbar-color: #444444 transparent; /* Firefox - цвет ползунка и трека */
+    cursor: grab;
+}
+
+/* Для Webkit браузеров (Chrome, Safari, Edge) */
+.whoUseItMainBlock::-webkit-scrollbar {
+    height: 4px; /* очень тонкая полоса */
+}
+
+.whoUseItMainBlock::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 0 50px;
+}
+
+.whoUseItMainBlock::-webkit-scrollbar-thumb {
+    background: #ddd;
+    border-radius: 2px;
+}
+
+.whoUseItMainBlock::-webkit-scrollbar-thumb:hover {
+    background: #bbb;
+}
+
+.whoUseItMainBlock::-webkit-scrollbar-button {
+    display: none;
+}
+.whoUseItBlock {
+    display: block;
+    flex-shrink: 0; /* запрещаем сжиматься блокам */
+    width: 311px;
+    height: 597px;
+}
+
+.whoUseItImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* чтобы изображение заполняло блок */
+}
+
+/* Создаем волнообразный эффект через nth-child */
+.whoUseItBlock:nth-child(1) { margin-top: 0px; }
+.whoUseItBlock:nth-child(2) { margin-top: 40px; }
+.whoUseItBlock:nth-child(3) { margin-top: 20px; }
+.whoUseItBlock:nth-child(4) { margin-top: 60px; }
+.whoUseItBlock:nth-child(5) { margin-top: 80px; }
+.whoUseItBlock:nth-child(6) { margin-top: 60px; }
+.whoUseItBlock:nth-child(7) { margin-top: 40px; }
+.whoUseItBlock:nth-child(8) { margin-top: 20px; }
+.whoUseItBlock:nth-child(9) { margin-top: 0px; }
+.whoUseItBlock:nth-child(10) { margin-top: 20px; }
+
