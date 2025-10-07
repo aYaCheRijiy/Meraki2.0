@@ -32,7 +32,8 @@
 
 /* Общие стили для body */
 body {
-
+background-color: white;
+    color: #333333;
 }
 
 
@@ -1145,14 +1146,17 @@ background-color: #CAD1FF;
 /*второй будто телефон*/
 .phoneAndText_container{
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 .titleUpP{
-    font-family: "TekturSemiBold", cursive;
-    font-size: 25px;
+    font-family: "unboundedBold", cursive;
+    font-size: 20px;
     text-align: center;
+    line-height: 1.4;
+    color: #333333;
 }
 .titleDownP{
-    font-family: "TekturRegular", cursive;
+    font-family: "unboundedLight", cursive;
     font-size: 15px;
     text-align: center;
 }
@@ -1200,11 +1204,11 @@ background-color: #CAD1FF;
     padding-bottom: 100px;
 }
 .titleUpPRightOnPhone{
-    font-family: "TekturSemiBold", cursive;
+    font-family: "unboundedRegular", cursive;
     font-size: 25px;
 }
 .titleDownPRightOnPhone{
-    font-family:"TekturRegular",cursive;
+    font-family:"UnboundedLight",cursive;
     font-size: 15px;
 }
 
@@ -1247,11 +1251,11 @@ background-color: #CAD1FF;
     }
 
     .titleUpP {
-        font-size: 20px;
+        font-size: 15px;
     }
 
     .titleDownP {
-        font-size: 14px;
+        font-size: 11px;
     }
 
     .phoneAndTextTwo {
@@ -1266,11 +1270,11 @@ background-color: #CAD1FF;
     }
 
     .titleUpPRightOnPhone {
-        font-size: 20px;
+        font-size: 14px;
     }
 
     .titleDownPRightOnPhone {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .textPRightOnPhone {
@@ -1280,10 +1284,10 @@ background-color: #CAD1FF;
 
 /*блоки для кого*/
 .forWho_container{
-    margin-top: 30px;
-    padding: 0 15px; /* Добавляем отступы по бокам */
+    margin-top: 5px;
+    padding: 0 2.5%;
     max-width: 100%;
-    overflow-x: hidden; /* На всякий случай скрываем горизонтальный скролл */
+    overflow-x: hidden;
     padding-bottom: 5px;
 }
 
@@ -1292,134 +1296,212 @@ background-color: #CAD1FF;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
-    max-width: 80%;
+    max-width: 100%;
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
 }
 
-
 .forWhoP{
     text-align: center;
-    font-family: "unboundedBold",cursive;
+    font-family: "unboundedBold", cursive;
     font-size: 20px;
     color: #333333;
     line-height: 1.4;
-    margin-top: 20px;
-
+    margin-top: 10px;
+    margin-bottom: 3px;
 }
-@media (max-width: 1240px) {
+@media (max-width: 1024px) {
+    .forWhoP{
+        font-size: 17px;
+    }
+}
+@media (max-width: 724px) {
     .forWhoP{
         font-size: 15px;
     }
 }
-@media (max-width: 850px) {
+@media (max-width: 480px) {
     .forWhoP{
-        font-size: 12px;
+        font-size: 13px;
     }
 }
-
 
 .forWho_block{
     border: 1px solid black;
     box-shadow: 3px 3px 0px 0px rgb(0 0 0);
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 10px;
-    width: 100%; /* Занимает всю доступную ширину колонки */
-    max-width: 100%;
-    min-height: 300px;
+    justify-content: space-between;
+    padding: 20px;
     border-radius: 15px;
-    box-sizing: border-box; /* Важно для правильного расчета размеров */
+    box-sizing: border-box;
     transition: transform 0.3s ease;
+    width: 100%;
+    max-width: 100%;
+    padding: 50px;
+}
 
-}
 .forWho_block:hover{
-    transform:translateY(5px);
+    transform: translateY(5px);
 }
+
 .forWho_img{
     width: 130px;
     height: 130px;
-    flex-shrink: 0; /* Изображение не сжимается */
+    flex-shrink: 0;
+    margin-left: 15px;
 }
 
 .spanForWho{
-    font-family: Tektur;
+    font-family: 'unboundedRegular', cursive;
     font-size: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     display: block;
 }
 
 .forWho_text p{
-    font-family: Tektur;
+    font-family: 'unboundedLight', cursive;
     font-size: 20px;
     margin: 0;
+    line-height: 1.4;
 }
 
 .forWho_text{
-    margin: 20px;
-    flex: 1; /* Текст занимает доступное пространство */
+    margin: 0;
+    flex: 1;
 }
 
-/* Медиа-запрос для мобильных устройств */
+/* 1024px и меньше - 1 колонка */
+@media (max-width: 1024px) {
+    .forWho_blockAll{
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 800px; /* Ограничиваем максимальную ширину для лучшего вида */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .forWho_container{
+        padding: 5px 5%;
+    }
+
+    .forWho_block{
+        padding: 25px;
+    }
+    .spanForWho {
+        font-size: 25px;
+    }
+    .forWho_text p{
+        font-size: 15px;
+    }
+}
+
+/* 768px - оптимизация для планшетов */
 @media (max-width: 768px) {
     .forWho_blockAll{
-        grid-template-columns: 1fr; /* Одна колонка на мобильных */
         gap: 20px;
     }
 
     .forWho_block{
-        min-width: unset; /* Убираем фиксированную минимальную ширину */
-        width: 100%;
-        max-width: 100%;
-        flex-direction: row; /* Вертикальное расположение на мобильных */
-        text-align: center;
-        min-height: auto; /* Автоматическая высота */
         padding: 20px;
+        flex-direction: row; /* Сохраняем горизонтальное расположение */
     }
 
     .forWho_img{
-        margin-top: 15px;
-        width: 100px; /* Немного уменьшаем изображение на мобильных */
-        height: 100px;
+        width: 110px;
+        height: 110px;
+        margin-left: 15px;
     }
 
     .spanForWho{
-        font-size: 24px; /* Уменьшаем размер шрифта на мобильных */
-        margin-bottom: 20px;
+        font-size: 17px;
+        margin-bottom: 15px;
     }
 
     .forWho_text p{
-        font-size: 16px;
-    }
-    .forWho_text{
-        text-align: left;
+        font-size: 10px;
     }
 }
 
-/* Дополнительный медиа-запрос для очень маленьких экранов */
+/* 480px - маленькие планшеты и большие телефоны */
 @media (max-width: 480px) {
     .forWho_container{
-        padding: 0 10px;
+        padding: 5px 15px;
+    }
+
+    .forWho_block{
+        padding: 18px;
+    }
+
+    .forWho_img{
+        width: 70px;
+        height: 70px;
+        margin-left: 12px;
+    }
+
+    .forWho_text p{
+        font-size: 11px;
+    }
+
+    .spanForWho{
+        font-size: 12px;
+        margin-bottom: 12px;
+
+    }
+}
+
+/* 380px и меньше - мобильные телефоны */
+@media (max-width: 380px) {
+    .forWho_container{
+        padding: 5px 10px;
+    }
+
+    .forWho_blockAll{
+        gap: 15px;
     }
 
     .forWho_block{
         padding: 15px;
+        flex-direction: row-reverse;
+        text-align: left;
+    }
+
+    .forWho_img{
+        width: 60px;
+        height: 60px;
+        margin-left: 0;
+        margin-top: 15px;
+        order: -1; /* Изображение переносится вверх */
     }
 
     .spanForWho{
-        font-size: 20px;
+        font-size: 10px;
+        margin-bottom: 10px;
     }
 
     .forWho_text p{
-        font-size: 14px;
+        font-size: 7px;
+
     }
-    .forWho_text{
-        text-align: left;
+
+}
+
+/* Дополнительные улучшения для очень больших экранов */
+@media (min-width: 1921px) {
+    .forWho_container{
+        max-width: 1920px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
+/* Оптимизация высоты текста для очень короткого контента */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .forWho_block{
+        min-height: 180px; /* Обеспечиваем одинаковую высоту блоков */
+    }
+}
 
 
 
@@ -1511,84 +1593,217 @@ background-color: #CAD1FF;
 }
 
 /*FOOTER*/
-.footer_container{
-    width: 100%;
-    display: flex;
-    /* gap: 90%; */
-    justify-content: space-between;
-    margin-left: 5%;
-    margin-right: 10%;
-}
 footer {
     width: 105%;
     margin-left: -2.5%;
-    /* height: 75px; */
-    gap: 10px;
-    display: flex;
-
     background-color: #eee9ff;
-    padding: 5px;
-
-    z-index: -2;
+    padding: 20px 0;
     border-top: 1px solid black;
     margin-top: auto;
-
-
-}
-.footer_column{
-
-
 }
 
-.hightLightMarker{
-    color: #424242;
+.footer_container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 2vh 0;
+    gap: 30px;
+}
+
+.footer_column_A_container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+}
+
+.socialMediaLinkFooter_container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    justify-content: flex-start;
+}
+
+.footer_column h2 {
+    font-size: 18px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+.footer_column_one p{
+    font-size: 13px;
+    margin-top:5px;
+
+}
+.footer_column_A_container a{
+    font-size: 13px;
+    margin-top:5px;
+    font-family: 'UnboundedLight',cursive;
+    font-weight: lighter;
+
+}
+.hightLightMarker {
+    color: #000000;
     position: relative;
     display: inline-block;
 }
 
-.hightLightMarker::after{
+.hightLightMarker::after {
     content: '';
     position: absolute;
     bottom: 0.1em;
     left: -0.1em;
     width: calc(100% + 0.2em);
     height: 0.2em;
-    background-color: #fff4c3;
+    background-color: #ff6464;
     z-index: 1;
     opacity: 0.8;
     border-radius: 3px;
-    transform: skewX(-80deg); /* Наклон для эффекта рукописного маркера */
+    transform: skewX(-20deg);
 }
-.footer_column_one{
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
- }
-.footer_column_two{
+
+.footer_column {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
-.footer_column_tree{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+.footer_column_one {
+    flex: 1;
+    max-width: 300px;
 }
-@media (max-width:768px ) {
-    .footer_container{
-        margin-left: 3%;
-        margin-right: 7%;
+
+.footer_column_two,
+.footer_column_tree {
+    flex: 0 1 auto;
+}
+
+/* Планшеты */
+@media (max-width: 1024px) {
+    .footer_container {
+        width: 92%;
+        gap: 20px;
+    }
+
+    .footer_column h2 {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .footer_column_one {
+        max-width: 250px;
+    }
+}
+
+/* Мобильные устройства (ландшафт) */
+@media (max-width: 768px) {
+    .footer_container {
+        flex-wrap: wrap;
+        gap: 30px;
+        width: 90%;
+    }
+
+    .footer_column_one {
+        flex: 1 1 100%;
+        max-width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .socialMediaLinkFooter_container {
+        justify-content: center;
+    }
+
+    .footer_column_two,
+    .footer_column_tree {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    .footer_column h2 {
+        font-size: 14px;
+        margin-left: 0;
+    }
+    .footer_column_A_container a{
+        font-size: 12px;
+        margin-top: 0;
+    }
+    .footer_column_oneLogoSvg{
+        display: flex;
+        justify-content: center;
+        width: 113px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 }
-@media (max-width:480px ) {
-    .footer_container{
-        margin-left: 1%;
-        margin-right: 4%;
+
+/* Мобильные устройства (портрет) */
+@media (max-width: 480px) {
+    .footer_container {
+        flex-direction: column;
+        gap: 25px;
+        width: 85%;
+        text-align: center;
+    }
+
+    .footer_column_one {
+        order: 3;
+        margin-top: 10px;
+    }
+
+    .footer_column_two,
+    .footer_column_tree {
+        width: 100%;
+        border-bottom: 1px solid black;
+        padding-bottom:20px ;
+    }
+
+    .footer_column h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .footer_column_A_container{
+        gap: 10px;
+        align-items: flex-start;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .footer_column_oneLogoSvg{
+        width: 60px;
+        height: 60px;
+    }
+    .footer_column_oneLogoSvg svg{
+        width: 60px;
+        height: 60px;
+    }
+
+    .socialMediaLinkFooter_container {
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    /* Уменьшаем логотип на мобильных */
+    .socialMediaLinkFooter_container svg {
+        width: 20px;
+        height: 20px;
     }
 
 }
 
+/* Очень маленькие экраны */
+@media (max-width: 320px) {
+    .footer_container {
+        width: 90%;
+        gap: 20px;
+    }
+
+    .footer_column h2 {
+        font-size: 16px;
+    }
+}
 
 
 
@@ -1767,7 +1982,7 @@ body.auth-layout {
 .whoUseIt_P{
     text-align: center;
     font-family: "unboundedBold",cursive;
-    font-size: 30px;
+    font-size: 25px;
     color: #333333;
     line-height: 1.4;
     margin-top: 20px;
@@ -1779,14 +1994,14 @@ body.auth-layout {
 @media (max-width: 1240px) {
     .whoUseIt_P{
 
-        font-size: 25px;
+        font-size: 20px;
 
     }
 }
 @media (max-width: 850px) {
     .whoUseIt_P{
 
-        font-size: 21px;
+        font-size: 15px;
 
     }
 
@@ -1816,7 +2031,10 @@ body.auth-layout {
     transform: skewX(-30deg); /* Наклон для эффекта рукописного маркера */
 }
 
-
+.whoUseIt_container{
+    width: 105%;
+    margin-left: -2.5%;
+}
 .whoUseItMainBlock {
     display: flex;
     align-items: flex-start;
@@ -1826,11 +2044,12 @@ body.auth-layout {
     scrollbar-width: thin; /* Firefox - тонкий скролл */
     scrollbar-color: #444444 transparent; /* Firefox - цвет ползунка и трека */
     cursor: grab;
+    margin-left: 50px;
 }
 
 /* Для Webkit браузеров (Chrome, Safari, Edge) */
 .whoUseItMainBlock::-webkit-scrollbar {
-    height: 4px; /* очень тонкая полоса */
+    height: 4px;
 }
 
 .whoUseItMainBlock::-webkit-scrollbar-track {
@@ -1862,7 +2081,39 @@ body.auth-layout {
     height: 100%;
     object-fit: cover; /* чтобы изображение заполняло блок */
 }
+@media (max-width: 1024px) {
+    .whoUseItBlock{
+        width: 284px;
+        height: 546px;
 
+
+    }
+    .whoUseItMainBlock{
+        margin-left: 30px;
+        margin-right: 7px;
+    }
+}
+@media (max-width: 768px) {
+    .whoUseItBlock{
+        width: 214px;
+        height: 411px;
+    }
+    .whoUseItMainBlock{
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+@media (max-width: 480px) {
+    .whoUseItBlock{
+        width: 192px;
+        height: 368px;
+
+    }
+    .whoUseItMainBlock{
+        margin-left: 7px;
+        margin-right: 7px;
+    }
+}
 /* Создаем волнообразный эффект через nth-child */
 .whoUseItBlock:nth-child(1) { margin-top: 0px; }
 .whoUseItBlock:nth-child(2) { margin-top: 40px; }

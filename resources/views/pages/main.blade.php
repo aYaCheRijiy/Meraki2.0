@@ -186,6 +186,22 @@
             </div>
         </div>
     </div>
+    <div class="fourBlockCikl-container">
+        <div class="fourBlockCikl">
+            <!-- Оригинальные блоки -->
+
+            <div class="blokCickl blokCickl3">Все ссылки в одой</div>
+            <div class="blokCickl blokCickl4">Централизируй свои проекты</div>
+            <div class="blokCickl blokCickl1">Твоя личная визитка</div>
+            <div class="blokCickl blokCickl2">Централизируй свои проекты</div>
+
+            <!-- Дублированные блоки (такие же) -->
+            <div class="blokCickl blokCickl3">Все ссылки в одой</div>
+            <div class="blokCickl blokCickl4">Централизируй свои проекты</div>
+            <div class="blokCickl blokCickl1">Твоя личная визитка</div>
+            <div class="blokCickl blokCickl2">Централизируй свои проекты</div>
+        </div>
+    </div>
     <div class="phoneAndText_container">
         <p class="titleUpP">Больше чем просто ссылка в биографии.</p>
         <p class="titleDownP">Мы даём вам все инструменты, чтобы ваша карточка работала на вас 24/7.</p>
@@ -251,21 +267,6 @@
             </div>
         </div>
     </div>
-    <div class="fourBlockCikl-container">
-        <div class="fourBlockCikl">
-            <!-- Оригинальные блоки -->
 
-            <div class="blokCickl blokCickl3">Все ссылки в одой</div>
-            <div class="blokCickl blokCickl4">Централизируй свои проекты</div>
-            <div class="blokCickl blokCickl1">Твоя личная визитка</div>
-            <div class="blokCickl blokCickl2">Централизируй свои проекты</div>
-
-            <!-- Дублированные блоки (такие же) -->
-            <div class="blokCickl blokCickl3">Все ссылки в одой</div>
-            <div class="blokCickl blokCickl4">Централизируй свои проекты</div>
-            <div class="blokCickl blokCickl1">Твоя личная визитка</div>
-            <div class="blokCickl blokCickl2">Централизируй свои проекты</div>
-        </div>
-    </div>
 
 @endsection
