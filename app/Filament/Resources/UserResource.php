@@ -1,57 +1,85 @@
 <?php
 
 namespace App\Filament\Resources;
-
+use App\Models\User;
+use App\Models\Role;
+use Filament\Forms;
+use Filament\Tables;
+use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
-use App\Models\User;
-use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Closure;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+
 
 class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-users';
+
+    protected static ?string $navigationGroup = 'Пользователи';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('username')
-                    ->required()
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('avatar')
-                    ->maxLength(191),
-                Forms\Components\Textarea::make('bio')
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('location')
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('website')
-                    ->maxLength(191),
-                Forms\Components\TextInput::make('role')
-                    ->required()
-                    ->maxLength(191)
-                    ->default('user'),
-                Forms\Components\TextInput::make('plan_id')
-                    ->numeric(),
+                Forms\Components\Section::make('Основная информация')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Имя')
+                            ->required()
+                            ->maxLength(255),
+
+                        Forms\Components\TextInput::make('email')
+                            ->label('Email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255)
+                            ->unique(ignoreRecord: true),
+
+                        Forms\Components\TextInput::make('password')
+                            ->label('Пароль')
+                            ->password()
+                            ->required(fn ($livewire) => $livewire instanceof \Filament\Resources\Pages\CreateRecord)
+                            ->rule(Password::default())
+                            ->dehydrated(fn ($state) => filled($state))
+                            ->dehydrateStateUsing(fn ($state) => Hash::make($state)),
+                    ])->columns(2),
+
+                Forms\Components\Section::make('Роли и права')
+                    ->schema([
+                        Forms\Components\Select::make('roles')
+                            ->label('Роли')
+                            ->relationship('roles', 'name')
+                            ->multiple()
+                            ->preload()
+                            ->options(Role::all()->pluck('name', 'id'))
+                            ->rules([
+                                function () {
+                                    return function (string $attribute, $value, Closure $fail) {
+                                        $currentUser = auth()->user();
+                                        $selectedRoles = Role::whereIn('id', $value)->get();
+
+                                        foreach ($selectedRoles as $role) {
+                                            if ($role->hierarchy_level >= $currentUser->getHierarchyLevel()) {
+                                                $fail("Вы не можете назначать роль '{$role->name}' - у нее такой же или высший уровень доступа.");
+                                            }
+                                        }
+                                    };
+                                },
+                            ])
+                            ->hint(function () {
+                                $currentUser = auth()->user();
+                                $availableRoles = Role::where('hierarchy_level', '<', $currentUser->getHierarchyLevel())->get();
+                                return 'Доступные роли: ' . $availableRoles->pluck('name')->implode(', ');
+                            }),
+                    ]),
             ]);
     }
 
@@ -60,60 +88,75 @@ class UserResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
+                    ->label('Имя')
+                    ->searchable()
                     ->sortable(),
+
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email')
+                    ->searchable()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('roles.name')
+                    ->label('Роли')
+                    ->badge()
+                    ->colors([
+                        'danger' => 'super_admin',
+                        'warning' => 'admin',
+                        'success' => 'moderator',
+                        'gray' => 'user',
+                    ]),
+
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('username')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('avatar')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('location')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('website')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('role')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('plan_id')
-                    ->numeric()
+                    ->label('Создан')
+                    ->dateTime('d.m.Y H:i')
                     ->sortable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('roles')
+                    ->label('Роль')
+                    ->relationship('roles', 'name')
+                    ->multiple(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make()
+                    ->hidden(fn (User $record): bool =>
+                    !auth()->user()->canManageUser($record)
+                    ),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
-    public static function getRelations(): array
+    public static function getEloquentQuery(): Builder
     {
-        return [
-            //
-        ];
+        $currentUser = auth()->user();
+
+        // Супер-админ видит всех, кроме других супер-админов
+        if ($currentUser->isSuperAdmin()) {
+            return parent::getEloquentQuery()
+                ->whereHas('roles', function ($query) {
+                    $query->where('name', '!=', 'super_admin');
+                })
+                ->orWhereDoesntHave('roles');
+        }
+
+        // Обычный админ видит только тех, у кого уровень ниже
+        return parent::getEloquentQuery()
+            ->whereHas('roles', function ($query) use ($currentUser) {
+                $query->where('hierarchy_level', '<', $currentUser->getHierarchyLevel());
+            })
+            ->orWhereDoesntHave('roles');
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => \App\Filament\Resources\UserResource\Pages\ListUsers::route('/'),
+            'create' => \App\Filament\Resources\UserResource\Pages\CreateUser::route('/create'),
+            'edit' => \App\Filament\Resources\UserResource\Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }
