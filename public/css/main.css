@@ -401,6 +401,7 @@ background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
 }
 .titleOne{
       font-family: "unboundedBold",cursive;
@@ -436,7 +437,7 @@ background-color: white;
 .input_in_title {
     width: 100%;
     height: 50px;
-    padding: 0 45px 0 110px;
+    padding: 0 45px 0 115px;
     border: 1px solid black;
     border-radius: 25px;
 
@@ -510,7 +511,7 @@ background-color: white;
 
     .input_in_title {
         height: 48px;
-        padding: 0 30px 0 100px;
+        padding: 0 30px 0 105px;
         font-size: 15px;
     }
 
@@ -977,13 +978,13 @@ background-color: #CAD1FF;
 }
 
 .blockOnTreeBlockHeadP {
-    font-family: "TekturSemiBold", cursive;
+    font-family: "unboundedRegular", cursive;
     font-size: 20px;
     margin: 0 0 15px 0;
 }
 
 .blockOnTreeBlockBottomP {
-    font-family: "TekturRegular", cursive;
+    font-family: "UnboundedLight", cursive;
     font-size: 14px;
     line-height: 1.4;
     margin: 0;
@@ -1921,6 +1922,7 @@ body{
     flex-direction: column;
     min-height: 100vh;
 }
+
 .body{
     min-width:350px;
     margin: 0;
@@ -1929,7 +1931,7 @@ body{
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 120px;
+    padding-top: 106px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -2044,7 +2046,7 @@ body.auth-layout {
     scrollbar-width: thin; /* Firefox - тонкий скролл */
     scrollbar-color: #444444 transparent; /* Firefox - цвет ползунка и трека */
     cursor: grab;
-    margin-left: 50px;
+
 }
 
 /* Для Webkit браузеров (Chrome, Safari, Edge) */
@@ -2074,6 +2076,7 @@ body.auth-layout {
     flex-shrink: 0; /* запрещаем сжиматься блокам */
     width: 311px;
     height: 597px;
+    margin-left: 30px;
 }
 
 .whoUseItImg {
@@ -2126,3 +2129,78 @@ body.auth-layout {
 .whoUseItBlock:nth-child(9) { margin-top: 0px; }
 .whoUseItBlock:nth-child(10) { margin-top: 20px; }
 
+
+
+
+
+
+
+/*tablePricing*/
+.price_container{
+    width: 105%;
+    margin-left: -2.5%;
+}
+
+table {
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+}
+
+.priceTitle {
+    display: flex;
+    width: 100%;
+    background-color: #fff6f0;
+    justify-content: center;
+    padding: 10px 0px;
+    font-size: 20px;
+    border-bottom: 1px solid #7a7a7a;
+    font-family: 'unboundedRegular', cursive;
+
+}
+
+/* Выравнивание для всех ячеек таблицы */
+table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 15px 10px;
+}
+
+/* Первая колонка (только для строк с контентом) */
+table tr:not(:first-child) td:first-child {
+    text-align: left;
+    background-color: #f8fff0; /* Светлый фон для колонки с функциями */
+}
+
+/* Специально для заголовка "Функция / Возможность" */
+table tr:first-child td:first-child {
+    text-align: center !important;
+    background-color: #f8fff0; /* Такой же фон как у остальных */
+}
+
+/* Стили для изображений */
+.imgGalochka, .imgKrestik {
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
+}
+
+.headTable {
+    font-weight: bold;
+}
+
+/* Цвета для колонок */
+.basic-column {
+    background-color: #F0F5FF !important; /* Голубой */
+    border-left: 1px solid #7a7a7a;
+}
+
+.pro-column {
+    background-color: #FFF0F1 !important; /* Розовый */
+    border-left: 1px solid #7a7a7a;
+}
+
+.headTableFuncAndVozm{
+    text-align: center;
+}

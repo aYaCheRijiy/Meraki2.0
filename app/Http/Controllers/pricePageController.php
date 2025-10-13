@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 class pricePageController extends Controller
 {
     public function index() {
-        return view('pages.price');
+        $plans = config('pricing.plans');
+        return view('pages.price', compact('plans'));
     }
 }

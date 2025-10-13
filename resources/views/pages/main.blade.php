@@ -5,10 +5,10 @@
         <div class="titleMainUp">
 
             <div class="titleOne"> Создайте свой личный мини сайт с сылками, который расскажет и покажет о вас всё и даже <span class="highlight-marker">больше.</span></div>
-            <div class="titleTwo">PHIDÖ — простой конструктор для впечатляющих карточек-линк. Соберите свой уникальный профиль за 5 минут, чтобы делиться всеми важными ссылками в одной биографии.</div>
+            <div class="titleTwo">MyLink — простой конструктор для впечатляющих карточек-линк. Соберите свой уникальный профиль за 5 минут, чтобы делиться всеми важными ссылками в одной биографии.</div>
             <div class="input_in_title_container">
                 <input class="input_in_title" placeholder="ваш ID">
-                <span class="domain-text">Meraki.ru/</span>
+                <span class="domain-text">MyLink.ru/</span>
                 <button class="send-button" type="button">
                     <img class="iconSendImg" src="{{ asset('img/iconSend.png') }}" alt="Отправить">
                 </button>
