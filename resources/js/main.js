@@ -29,7 +29,6 @@
 
 
 
-
     document.addEventListener('DOMContentLoaded', function() {
         const dropdownButton = document.querySelector('.dropdown-button');
 
@@ -45,15 +44,73 @@
             this.classList.toggle('active');
         });
 
-        // Дополнительные обработчики для подпунктов (на всякий случай)
-        const dropdownItems = document.querySelectorAll('.dropdown-item');
-        dropdownItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.stopPropagation();
-                // Ваша логика для каждого подпункта
-                console.log('Выбран пункт:', this.textContent);
-            });
+
+
+
+
+        function validateUserId(userId) {
+            if (!userId) return false;
+            if (userId.length < 3) return false;
+            const validPattern = /^[a-zA-Z0-9_-]+$/;
+            return validPattern.test(userId);
+        }
+
+        function showError(message) {
+            // Удаляем старую ошибку если есть
+            const oldError = document.querySelector('.error-message');
+            if (oldError) {
+                oldError.remove();
+            }
+
+            // Создаем элемент для сообщения об ошибке
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            errorElement.style.cssText = `
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        color: #ff606f;
+        font-size: 11px;
+        margin-top: 3px;
+        padding: 8px 8px;
+        border-radius: 4px;
+        z-index: 1000;
+    `;
+            errorElement.textContent = message;
+
+            // Добавляем сообщение об ошибке после контейнера формы
+            const formContainer = document.querySelector('.form-container');
+            formContainer.style.position = 'relative'; // Делаем контейнер относительным для абсолютного позиционирования ошибки
+            formContainer.appendChild(errorElement);
+
+            // Автоматическое удаление через 5 секунд
+            setTimeout(() => {
+                errorElement.remove();
+            }, 115000);
+        }
+
+        document.getElementById('userIdForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userId = this.user_id.value.trim();
+
+            if (validateUserId(userId)) {
+                this.submit();
+            } else {
+                showError('Пожалуйста, введите корректный ID (минимум 3 символа, только латинские буквы)');
+            }
         });
+
+
+        // Дополнительные обработчики для подпунктов (на всякий случай)
+        // const dropdownItems = document.querySelectorAll('.dropdown-item');
+        // dropdownItems.forEach(item => {
+        //     item.addEventListener('click', function(e) {
+        //         e.stopPropagation();
+        //         // Ваша логика для каждого подпункта
+        //         console.log('Выбран пункт:', this.textContent);
+        //     });
+        // });
     });
 
 

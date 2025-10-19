@@ -14,6 +14,17 @@ new #[Layout('layouts.auth')] class extends Component // ← изменили н
     public string $email = '';
     public string $password = '';
     public string $password_confirmation = '';
+    public string $userId = '';
+    public function mount(): void
+    {
+        // Получаем user_id из GET-параметра если он есть
+        $this->userId = request('user_id', '');
+
+        // Если передан user_id, используем его как имя
+        if ($this->userId) {
+            $this->name = $this->userId;
+        }
+    }
 
     /**
      * Handle an incoming registration request.
@@ -32,7 +43,7 @@ new #[Layout('layouts.auth')] class extends Component // ← изменили н
 
         Auth::login($user);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        $this->redirect(route('bilder.index', absolute: false), navigate: true);
     }
 }; ?>
 
@@ -43,7 +54,7 @@ new #[Layout('layouts.auth')] class extends Component // ← изменили н
             <x-input-label for="name" value="Имя" class="custom-label" />
             <x-text-input wire:model="name" id="name"
                           class="custom-input block mt-1 w-full"
-                          type="text" name="name" required autofocus autocomplete="name" />
+                          type="text" name="name" value="{{ $userId ?? '' }}" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="custom-error mt-2" />
         </div>
 

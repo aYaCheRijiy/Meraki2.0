@@ -8,7 +8,7 @@ use Filament\Tables;
 use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
+
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\SoftDeletingScope;

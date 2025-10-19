@@ -28,7 +28,14 @@
     font-family: "TekturRegular";
     src: url("../fonts/Tektur/static/Tektur-Regular.ttf");
 }
-
+*, *::before, *::after {
+    box-sizing: border-box;
+}input[type="text"] {
+     font-family: inherit; /* 1 */
+     font-size: inherit; /* 1 */
+     line-height: inherit; /* 1 */
+     margin: 0; /* 2 */
+ }
 
 /* Общие стили для body */
 body {
@@ -396,12 +403,47 @@ background-color: white;
 
 
 
+/*ДЛЯ ТЕЛЕФОНА В ТАЙТЛЕ*/
+.container_phoneImgInTitle{
+    width: 25%;
+
+}
+.phoneImgInTitle{
+    width: 380px;
+margin-right:170px;
+}
+@media (max-width: 1024px) {
+    .phoneImgInTitle{
+        width: 325px;
+        margin-top: 20px;
+
+    }
+    .container_phoneImgInTitle{
+        width: 25%;
+
+    }
+
+}
+@media (max-width: 768px) {
+    .phoneImgInTitle{
+        width: 275px;
+        margin-top: 20px;
+
+    }
+    .container_phoneImgInTitle{
+        width: 40%;
+
+    }
+
+}
+
 /*body main*/
 .titleAndPhoneOne{
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
+
 }
 .titleOne{
       font-family: "unboundedBold",cursive;
@@ -592,6 +634,7 @@ background-color: white;
     .titleAndPhoneOne {
         justify-content: center; /* Центрируем контент */
         text-align: center; /* Выравниваем текст по центру */
+        flex-direction: column;
     }
 
     /* ИЗМЕНЕНИЕ: Увеличиваем ширину инпута на мобильных */
@@ -1931,7 +1974,7 @@ body{
     width: 95%;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 106px;
+    padding-top: 105px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -2134,73 +2177,375 @@ body.auth-layout {
 
 
 
-
-/*tablePricing*/
-.price_container{
-    width: 105%;
-    margin-left: -2.5%;
+/* Pricing Section */
+.pricing-section {
+    max-width: 1400px;
+    margin: 60px auto;
+    padding: 0 20px;
 }
 
-table {
-    width: 100%;
-    border: none;
-    border-collapse: collapse;
-}
-
-.priceTitle {
-    display: flex;
-    width: 100%;
-    background-color: #fff6f0;
-    justify-content: center;
-    padding: 10px 0px;
-    font-size: 20px;
-    border-bottom: 1px solid #7a7a7a;
-    font-family: 'unboundedRegular', cursive;
-
-}
-
-/* Выравнивание для всех ячеек таблицы */
-table td {
+.pricing-header {
     text-align: center;
-    vertical-align: middle;
-    padding: 15px 10px;
+    margin-bottom: 60px;
 }
 
-/* Первая колонка (только для строк с контентом) */
-table tr:not(:first-child) td:first-child {
-    text-align: left;
-    background-color: #f8fff0; /* Светлый фон для колонки с функциями */
+.pricing-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+    font-family: 'unboundedRegular', sans-serif;
 }
 
-/* Специально для заголовка "Функция / Возможность" */
-table tr:first-child td:first-child {
-    text-align: center !important;
-    background-color: #f8fff0; /* Такой же фон как у остальных */
-}
-
-/* Стили для изображений */
-.imgGalochka, .imgKrestik {
-    display: block;
+.pricing-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 600px;
     margin: 0 auto;
-    width: 40px;
-    height: 40px;
+    line-height: 1.6;
 }
 
-.headTable {
-    font-weight: bold;
+/* Desktop Table */
+.pricing-table-container {
+    width: 100%;
 }
 
-/* Цвета для колонок */
+.desktop-view {
+    display: block;
+}
+
+.mobile-view {
+    display: none;
+}
+
+.pricing-table {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #eaeaea;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 1fr 280px 280px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.feature-column {
+    padding: 24px;
+    font-weight: 600;
+    color: #1a1a1a;
+    background: white;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+}
+
+.plan-column {
+    padding: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px;
+    min-height: 100px;
+}
+
+.plan-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    font-family: 'unboundedRegular', sans-serif;
+    line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+.plan-price {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #666;
+    margin-top: 8px;
+}
+
+/* Table Body */
+.table-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 1fr 280px 280px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+    min-height: 70px;
+}
+
+.table-row:hover {
+    background-color: #fafafa;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+/* Feature Status */
+.feature-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+.feature-status.available {
+    color: #10b981;
+    background-color: #ecfdf5;
+}
+
+.feature-status.unavailable {
+    color: #ef4444;
+    background-color: #fef2f2;
+}
+
+/* Column Colors */
 .basic-column {
-    background-color: #F0F5FF !important; /* Голубой */
-    border-left: 1px solid #7a7a7a;
+    background: linear-gradient(135deg, #f0f5ff 0%, #f8fbff 100%);
+    border-left: 1px solid #e1e8ff;
 }
 
 .pro-column {
-    background-color: #FFF0F1 !important; /* Розовый */
-    border-left: 1px solid #7a7a7a;
+    background: linear-gradient(135deg, #fff0f1 0%, #fff8f8 100%);
+    border-left: 1px solid #ffe1e3;
 }
 
-.headTableFuncAndVozm{
+/* Mobile Cards */
+.pricing-cards {
+    display: none;
+    gap: 24px;
+    flex-direction: column;
+}
+
+.pricing-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eaeaea;
+    overflow: hidden;
+}
+
+.basic-card .card-header {
+    background: linear-gradient(135deg, #f0f5ff 0%, #f8fbff 100%);
+}
+
+.pro-card .card-header {
+    background: linear-gradient(135deg, #fff0f1 0%, #fff8f8 100%);
+}
+
+.card-header {
+    padding: 28px;
     text-align: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.card-header .plan-name {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.card-header .plan-price {
+    font-size: 1.8rem;
+}
+
+.card-features {
+    padding: 24px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.feature-item:last-child {
+    border-bottom: none;
+}
+
+.feature-text {
+    flex: 1;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+/* Mobile Feature Status */
+.feature-item .feature-status {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .pricing-section {
+        max-width: 100%;
+        padding: 0 40px;
+    }
+
+    .table-header,
+    .table-row {
+        grid-template-columns: 1fr 240px 240px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .pricing-title {
+        font-size: 2rem;
+    }
+
+    .table-header,
+    .table-row {
+        grid-template-columns: 1fr 220px 220px;
+    }
+
+    .plan-name {
+        font-size: 1.0rem;
+    }
+
+    .plan-price {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .pricing-section {
+        padding: 0 30px;
+    }
+
+    .table-header,
+    .table-row {
+        grid-template-columns: 1fr 200px 200px;
+    }
+
+    .plan-name {
+        font-size: 0.9rem;
+    }
+
+    .feature-column {
+        font-size: 1rem;
+        padding: 20px;
+    }
+
+    .plan-column {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricing-section {
+        margin: 40px auto;
+        padding: 0 16px;
+    }
+
+    .pricing-title {
+        font-size: 1.75rem;
+    }
+
+    .pricing-header {
+        margin-bottom: 40px;
+    }
+
+    .desktop-view {
+        display: none;
+    }
+
+    .mobile-view {
+        display: flex;
+    }
+
+    .pricing-cards {
+        display: flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-section {
+        margin: 30px auto;
+        padding: 0 12px;
+    }
+
+    .pricing-title {
+        font-size: 1.5rem;
+    }
+
+    .card-header {
+        padding: 24px 20px;
+    }
+
+    .card-header .plan-name {
+        font-size: 1.1rem;
+    }
+
+    .card-header .plan-price {
+        font-size: 1.6rem;
+    }
+
+    .card-features {
+        padding: 20px;
+    }
+
+    .feature-item {
+        padding: 12px 0;
+    }
+
+    .feature-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* Smooth animations */
+.pricing-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pricing-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Focus states for accessibility */
+.feature-status:focus {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Better text wrapping */
+.plan-name, .feature-column, .feature-text {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/*BILDER*/
+.containerBilder{
+    margin-top: 10px;
+
+}
+.BilderP{
+    display: flex;
+    justify-content: center;
+    font-size: 23px;
+    padding-bottom:10px ;
+
+}
+.container_Preview{
+    float: right;  margin-bottom: 50px;  margin-right: 10%;
 }
