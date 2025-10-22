@@ -16,7 +16,7 @@
                         </button>
                     </div>
                 </form>
-                </form>
+
             </div>
         </div>
         <div class="container_phoneImgInTitle">
@@ -128,7 +128,7 @@
             <img class="fotoOnTreeBlocks" src="{{ asset('img/planet.png') }}" alt="">
         </div>
     </div>
-    <p class="whoUseIt_P"><span class="markerHightsLight">Кто использует Meraki?</span></p>
+    <p class="whoUseIt_P"><span class="markerHightsLight">Кто использует MyLink?</span></p>
     <div class="whoUseIt_container">
         <div class="whoUseItMainBlock">
             <a href="#" class="whoUseItBlock">
@@ -165,7 +165,7 @@
         </div>
     </div>
     <div class="forWho_container">
-        <p class="forWhoP">Meraki идеален для каждого, у кого есть аудитория или клиенты.</p>
+        <p class="forWhoP">MyLink идеален для каждого, у кого есть аудитория или клиенты.</p>
         <div class="forWho_blockAll">
             <div class="forWho_block forWho_blockOne">
                 <div class="forWho_text">

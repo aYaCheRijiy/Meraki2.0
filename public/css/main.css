@@ -614,7 +614,11 @@ margin-right:170px;
     }
 
 }
-
+@media (max-width: 750px) {
+    .titleAndPhoneOne {
+        flex-direction: column;
+    }
+}
 
 
 @media (max-width: 950px) {
@@ -634,7 +638,7 @@ margin-right:170px;
     .titleAndPhoneOne {
         justify-content: center; /* Центрируем контент */
         text-align: center; /* Выравниваем текст по центру */
-        flex-direction: column;
+
     }
 
     /* ИЗМЕНЕНИЕ: Увеличиваем ширину инпута на мобильных */
@@ -2301,16 +2305,19 @@ body.auth-layout {
     height: 32px;
     border-radius: 8px;
     margin: 0 auto;
+
 }
 
 .feature-status.available {
     color: #10b981;
     background-color: #ecfdf5;
+    border: 1px solid;
 }
 
 .feature-status.unavailable {
     color: #ef4444;
     background-color: #fef2f2;
+    border: 1px solid;
 }
 
 /* Column Colors */
