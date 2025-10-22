@@ -41,6 +41,7 @@ Git
 4. Сборка фронтенда
    bash
    npm run build
+   npm run dev
 5. Настройка окружения
    Скопируйте файл .env.example в .env:
 
