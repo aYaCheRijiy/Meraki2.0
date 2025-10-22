@@ -410,7 +410,7 @@ background-color: white;
 }
 .phoneImgInTitle{
     width: 380px;
-margin-right:170px;
+/*margin-right:170px;*/
 }
 @media (max-width: 1024px) {
     .phoneImgInTitle{
@@ -431,8 +431,9 @@ margin-right:170px;
 
     }
     .container_phoneImgInTitle{
-        width: 40%;
-
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
 }
@@ -608,9 +609,11 @@ margin-right:170px;
 
         font-size: 15px;
 
+  text-align: center;
     }
     .titleTwo{
-        font-size: 9px;
+        font-size: 9px;  text-align: center;
+
     }
 
 }
@@ -632,12 +635,13 @@ margin-right:170px;
         margin-left: 0;
         padding: 0 20px; /* Добавил отступы по бокам для мобильных */
         box-sizing: border-box; /* Чтобы padding не увеличивал ширину */
+
     }
 
     /* ИЗМЕНЕНИЕ: Контейнер для центрирования контента */
     .titleAndPhoneOne {
         justify-content: center; /* Центрируем контент */
-        text-align: center; /* Выравниваем текст по центру */
+
 
     }
 
