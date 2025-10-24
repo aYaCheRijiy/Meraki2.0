@@ -5,6 +5,8 @@ use App\Http\Controllers\mainPageController;
 use App\Http\Controllers\clientPageController;
 use App\Http\Controllers\pricePageController;
 use App\Http\Controllers\bilderPageController;
+use App\Livewire\Actions\Logout;
+use Illuminate\Http\Request;
 
 Route::get('/main', [mainPageController::class, 'index'])->name('main.index');
 Route::get('/client', [clientPageController::class, 'index'])->name('client.index');
@@ -22,6 +24,8 @@ Route::middleware(['auth', 'user.only'])->group(function () {
     // Здесь можно добавить другие защищенные маршруты для пользователей
     // Например: личный кабинет, настройки и т.д.
 });
+
+
 
 require __DIR__.'/auth.php';
 

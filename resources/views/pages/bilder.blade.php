@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="containerBilder">
-        <p class="BilderP" >Начни создавать свой мини-сайт</p>
+        <p class="BilderP" >Начни создавать свой Link-Bio</p>
         <div class="container_Blocks">
        </div>
         <div class="container_Preview">
